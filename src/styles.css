@@ -1074,3 +1074,603 @@ body {
     width: 100%;
   }
 }
+
+/* Notification Settings, Time Limits, Security Settings, Change PIN */
+.notification-settings,
+.time-limits,
+.security-settings,
+.change-pin {
+  padding: 30px;
+  background: white;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.settings-intro {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.settings-intro p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.settings-section {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.settings-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.setting-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.toggle-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.toggle-info strong {
+  font-size: 1.2rem;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.toggle-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--primary-color);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-switch input:disabled + .toggle-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.time-inputs {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.time-input-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.time-input-group label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.time-input {
+  padding: 12px 16px;
+  font-size: 1.2rem;
+  border: 3px solid var(--primary-color);
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.time-note {
+  margin: 15px 0 0 0;
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.priority-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.priority-contact-item {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.priority-icon {
+  font-size: 1.5rem;
+}
+
+.priority-name {
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.remove-priority-btn {
+  padding: 8px 16px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.button-add-priority {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.settings-note {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ffc107;
+  margin-top: 20px;
+}
+
+.settings-note h3 {
+  margin-top: 0;
+  color: #856404;
+  font-size: 1.3rem;
+}
+
+.settings-note ul {
+  margin: 10px 0 0 0;
+  padding-left: 25px;
+  color: #856404;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.settings-note li {
+  margin-bottom: 8px;
+}
+
+/* Time Limits Specific */
+.usage-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.usage-display {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.usage-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.usage-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+
+.usage-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.usage-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.usage-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.usage-info {
+  flex: 1;
+}
+
+.usage-info p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.usage-remaining {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.time-limit-picker {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.time-limit-input {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.time-limit-input label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.number-input {
+  padding: 12px 16px;
+  font-size: 1.5rem;
+  border: 3px solid var(--primary-color);
+  border-radius: 8px;
+  width: 100px;
+  font-family: inherit;
+  text-align: center;
+}
+
+.limit-summary {
+  margin: 10px 0 0 0;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: center;
+  padding: 15px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* Security Settings Specific */
+.security-status {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.status-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.status-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.status-label {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.security-note {
+  background: #fff3cd;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #856404;
+}
+
+.device-list {
+  margin-top: 20px;
+}
+
+.device-list h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.device-item {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.device-icon {
+  font-size: 2.5rem;
+}
+
+.device-info {
+  flex: 1;
+}
+
+.device-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.device-date {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.device-status {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.device-status.verified {
+  background: #4caf50;
+  color: white;
+}
+
+/* Change PIN Specific */
+.pin-success {
+  background: #e8f5e9;
+  padding: 60px 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.success-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.pin-success h2 {
+  color: #4caf50;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.pin-success p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.pin-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.pin-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.pin-step.active .step-number {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.2);
+}
+
+.pin-step.completed .step-number {
+  background: #4caf50;
+  color: white;
+}
+
+.step-label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.pin-step.active .step-label {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.step-line {
+  width: 100px;
+  height: 3px;
+  background: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+.pin-input-section {
+  background: #f5f5f5;
+  padding: 40px;
+  border-radius: 16px;
+  margin: 40px 0;
+  text-align: center;
+}
+
+.pin-input-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.pin-input-section > p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.pin-input-large {
+  width: 200px;
+  padding: 20px;
+  font-size: 2.5rem;
+  text-align: center;
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  font-family: monospace;
+  letter-spacing: 15px;
+  margin: 20px 0;
+}
+
+.pin-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 20px 0;
+  border-left: 4px solid #c62828;
+}
+
+.pin-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .setting-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .toggle-info {
+    margin-right: 0;
+  }
+  
+  .usage-display {
+    flex-direction: column;
+  }
+  
+  .time-limit-picker,
+  .time-inputs {
+    flex-direction: column;
+  }
+  
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pin-steps {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .step-line {
+    width: 3px;
+    height: 50px;
+  }
+  
+  .device-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -4,9 +4,21 @@ interface SettingsPanelProps {
   onExit: () => void;
   onActivityReportClick: () => void;
   onContactsManagerClick: () => void;
+  onNotificationsClick: () => void;
+  onTimeLimitsClick: () => void;
+  onSecurityClick: () => void;
+  onChangePinClick: () => void;
 }
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportClick, onContactsManagerClick }) => {
+const SettingsPanel: React.FC<SettingsPanelProps> = ({ 
+  onExit, 
+  onActivityReportClick, 
+  onContactsManagerClick,
+  onNotificationsClick,
+  onTimeLimitsClick,
+  onSecurityClick,
+  onChangePinClick
+}) => {
   return (
     <div className="app-container">
       <div className="header">
@@ -31,7 +43,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportC
           <p>
             Control when and how notifications are sent to keep your child safe without being intrusive.
           </p>
-          <button className="button-large">Configure Notifications</button>
+          <button className="button-large" onClick={onNotificationsClick}>Configure Notifications</button>
         </div>
 
         <div className="setting-item">
@@ -39,7 +51,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportC
           <p>
             Set daily time limits and quiet hours for when the app can be used.
           </p>
-          <button className="button-large">Set Time Limits</button>
+          <button className="button-large" onClick={onTimeLimitsClick}>Set Time Limits</button>
         </div>
 
         <div className="setting-item">
@@ -47,7 +59,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportC
           <p>
             All messages are end-to-end encrypted (E2EE). Configure additional security settings here.
           </p>
-          <button className="button-large">Security Settings</button>
+          <button className="button-large" onClick={onSecurityClick}>Security Settings</button>
         </div>
 
         <div className="setting-item">
@@ -55,7 +67,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportC
           <p>
             Update the PIN required to access these guardian settings.
           </p>
-          <button className="button-large">Change PIN</button>
+          <button className="button-large" onClick={onChangePinClick}>Change PIN</button>
         </div>
 
         <div className="setting-item">
