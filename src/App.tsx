@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './ThemeContext';
 import WelcomeScreen from './components/WelcomeScreen';
 import ChatInterface from './components/ChatInterface';
 import GuardianPinModal from './components/GuardianPinModal';
 import SettingsPanel from './components/SettingsPanel';
+import AppearancePanel from './components/AppearancePanel';
 
 const App: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showPinModal, setShowPinModal] = useState(false);
   const [isGuardianMode, setIsGuardianMode] = useState(false);
+  const [showAppearance, setShowAppearance] = useState(false);
   const [pinError, setPinError] = useState(false);
   const [guardianPin] = useState('1234'); // In production, this should be stored securely server-side
 
@@ -18,6 +21,10 @@ const App: React.FC = () => {
   const handleGuardianClick = () => {
     setPinError(false);
     setShowPinModal(true);
+  };
+
+  const handleAppearanceClick = () => {
+    setShowAppearance(true);
   };
 
   const handlePinSubmit = (pin: string) => {
@@ -39,16 +46,29 @@ const App: React.FC = () => {
     setIsGuardianMode(false);
   };
 
+  const handleCloseAppearance = () => {
+    setShowAppearance(false);
+  };
+
   if (showWelcome) {
-    return <WelcomeScreen onStart={handleStartChat} />;
+    return (
+      <ThemeProvider>
+        <WelcomeScreen onStart={handleStartChat} />
+      </ThemeProvider>
+    );
   }
 
   return (
-    <>
-      {isGuardianMode ? (
+    <ThemeProvider>
+      {showAppearance ? (
+        <AppearancePanel onClose={handleCloseAppearance} />
+      ) : isGuardianMode ? (
         <SettingsPanel onExit={handleExitGuardianMode} />
       ) : (
-        <ChatInterface onGuardianClick={handleGuardianClick} />
+        <ChatInterface 
+          onGuardianClick={handleGuardianClick}
+          onAppearanceClick={handleAppearanceClick}
+        />
       )}
       {showPinModal && (
         <GuardianPinModal
@@ -57,7 +77,7 @@ const App: React.FC = () => {
           hasError={pinError}
         />
       )}
-    </>
+    </ThemeProvider>
   );
 };
 

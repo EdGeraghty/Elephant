@@ -10,6 +10,7 @@ interface Message {
 
 interface ChatInterfaceProps {
   onGuardianClick: () => void;
+  onAppearanceClick: () => void;
 }
 
 // Simple counter-based ID generator to avoid collisions
@@ -19,7 +20,7 @@ const generateMessageId = (): string => {
   return `msg-${Date.now()}-${messageCounter}`;
 };
 
-const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick }) => {
+const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick, onAppearanceClick }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: generateMessageId(),
@@ -77,9 +78,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick }) => {
     <div className="app-container">
       <div className="header">
         <h1>🐘 Elephant Chat</h1>
-        <button className="guardian-button" onClick={onGuardianClick}>
-          👨‍👩‍👧 Guardian
-        </button>
+        <div className="header-buttons">
+          <button className="appearance-button" onClick={onAppearanceClick}>
+            🎨 Appearance
+          </button>
+          <button className="guardian-button" onClick={onGuardianClick}>
+            👨‍👩‍👧 Guardian
+          </button>
+        </div>
       </div>
       <div className="chat-container">
         <div className="messages-area">
