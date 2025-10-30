@@ -2,9 +2,10 @@ import React from 'react';
 
 interface SettingsPanelProps {
   onExit: () => void;
+  onActivityReportClick: () => void;
 }
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit }) => {
+const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportClick }) => {
   return (
     <div className="app-container">
       <div className="header">
@@ -61,7 +62,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit }) => {
           <p>
             View your child&apos;s chat activity and usage patterns in a privacy-respecting way.
           </p>
-          <button className="button-large">View Report</button>
+          <button className="button-large" onClick={onActivityReportClick}>View Report</button>
         </div>
 
         <div className="setting-item">

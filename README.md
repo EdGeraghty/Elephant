@@ -40,6 +40,10 @@ Elephant is a child-friendly Matrix chat client designed for tweens to communica
 ![Guardian Settings](https://github.com/user-attachments/assets/c87bd421-3617-41ff-8e58-fe6056c045b0)
 *Advanced settings for parents: approved contacts, time limits, notifications, security, and activity reports*
 
+### Activity Report (Guardian Protected)
+![Activity Report](https://github.com/user-attachments/assets/activity-report-screenshot)
+*Privacy-respecting activity dashboard showing usage patterns, contact activity, and weekly statistics without revealing message content*
+
 ---
 
 ## Features
@@ -242,6 +246,45 @@ All customizations are saved automatically in your browser!
 - Usage patterns and times
 - No message content (respects privacy)
 
+### Activity Report Details
+
+The Activity Report provides comprehensive usage insights while respecting privacy:
+
+**📈 Overview Statistics**
+- **Total Messages**: Cumulative count of all messages sent
+- **This Week**: Messages sent in the current week
+- **Active Contacts**: Number of people your child has messaged with
+- **Daily Average**: Average messages per day
+
+**📅 Weekly Activity Chart**
+- Visual bar chart showing message count for each day of the week
+- Helps identify usage patterns and trends
+- Easy-to-read color-coded bars
+
+**👥 Contact Activity**
+Lists all active contacts with:
+- Contact name
+- Number of messages exchanged
+- Last active time (e.g., "2 hours ago", "Yesterday")
+- Sorted by message frequency
+
+**⏰ Usage Patterns**
+- **Peak Usage Time**: When your child is most active (e.g., "4:00 PM - 6:00 PM")
+- **Time Spent Today**: Total time spent in the app today
+
+**🔒 Privacy Protection**
+- **No message content** is ever stored or displayed
+- Only counts and patterns are shown
+- All messages remain **end-to-end encrypted**
+- Report respects your child's privacy while keeping you informed
+
+**How to Access:**
+1. Click "👨‍👩‍👧 Guardian" button
+2. Enter PIN (default: `1234`)
+3. Click "View Report" in the Activity Report section
+4. Review statistics and patterns
+5. Click "Back to Settings" when done
+
 ---
 
 ## Development
@@ -257,7 +300,8 @@ Elephant/
 │   │   ├── ChatInterface.tsx       # Main chat UI
 │   │   ├── AppearancePanel.tsx     # Customization UI
 │   │   ├── GuardianPinModal.tsx    # PIN entry
-│   │   └── SettingsPanel.tsx       # Guardian controls
+│   │   ├── SettingsPanel.tsx       # Guardian controls
+│   │   └── ActivityReport.tsx      # Activity dashboard (guardian-protected)
 │   ├── ThemeContext.tsx   # Theme state management
 │   ├── App.tsx            # Main application
 │   ├── index.tsx          # Entry point
