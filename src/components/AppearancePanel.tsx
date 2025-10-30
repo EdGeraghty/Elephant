@@ -30,6 +30,10 @@ const predefinedThemes = [
     name: 'Night Sky',
     colors: { primary: '#2c3e50', secondary: '#4ca1af' },
   },
+  {
+    name: '🦄 Unicorn Magic',
+    colors: { primary: '#ec4899', secondary: '#a855f7' },
+  },
 ];
 
 const fontOptions = [
