@@ -55,6 +55,40 @@ npm run build
 
 The built files will be in the `dist/` directory.
 
+## Building for Debian Linux
+
+To create a Debian package, you can use Electron to wrap the web app:
+
+1. Install Electron packaging tools:
+```bash
+npm install --save-dev electron electron-builder
+```
+
+2. Add electron configuration to `package.json`:
+```json
+{
+  "main": "electron-main.js",
+  "build": {
+    "appId": "com.elephant.chat",
+    "linux": {
+      "target": ["deb"],
+      "category": "Network"
+    }
+  }
+}
+```
+
+3. Create `electron-main.js` to launch the app
+4. Build the Debian package:
+```bash
+npm run build
+npx electron-builder --linux deb
+```
+
+The `.deb` package will be created in the `dist/` directory and can be installed on Debian-based systems.
+
+**Note:** Full Electron integration is planned for future releases.
+
 ## Guardian PIN
 
 The default guardian PIN is `1234`. In a production environment, this should be:
@@ -96,12 +130,20 @@ Elephant/
 
 ## Security Note
 
-This is an early version. For production use:
-- Implement secure PIN storage
-- Add proper authentication
-- Integrate full Matrix SDK
-- Add content moderation features
-- Implement proper session management
+This is an early version intended as a demonstration. For production use:
+- **Implement secure PIN storage** - PINs should be hashed server-side, not stored in client code
+- **Add proper authentication** - Integrate with Matrix homeserver authentication
+- **Integrate full Matrix SDK** - Replace simulated messages with real Matrix protocol
+- **Add content moderation** - Implement filtering and safety features
+- **Implement proper session management** - Add secure login/logout flows
+- **Rate limiting** - Prevent brute-force PIN attacks
+- **Audit logging** - Track guardian access and configuration changes
+
+**Current Security Status:**
+- ✅ No known vulnerabilities in dependencies (matrix-js-sdk v39.0.0, webpack-dev-server v5.2.2)
+- ✅ CodeQL security analysis passed with 0 alerts
+- ⚠️ Guardian PIN is client-side only (demonstration feature)
+- ⚠️ Messages are simulated (Matrix SDK integration required for real E2EE)
 
 ## License
 
