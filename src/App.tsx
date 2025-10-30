@@ -8,13 +8,15 @@ const App: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showPinModal, setShowPinModal] = useState(false);
   const [isGuardianMode, setIsGuardianMode] = useState(false);
-  const [guardianPin] = useState('1234'); // In production, this should be stored securely
+  const [pinError, setPinError] = useState(false);
+  const [guardianPin] = useState('1234'); // In production, this should be stored securely server-side
 
   const handleStartChat = () => {
     setShowWelcome(false);
   };
 
   const handleGuardianClick = () => {
+    setPinError(false);
     setShowPinModal(true);
   };
 
@@ -22,13 +24,15 @@ const App: React.FC = () => {
     if (pin === guardianPin) {
       setIsGuardianMode(true);
       setShowPinModal(false);
+      setPinError(false);
     } else {
-      alert('❌ Incorrect PIN! Please ask your guardian for help.');
+      setPinError(true);
     }
   };
 
   const handlePinCancel = () => {
     setShowPinModal(false);
+    setPinError(false);
   };
 
   const handleExitGuardianMode = () => {
@@ -50,6 +54,7 @@ const App: React.FC = () => {
         <GuardianPinModal
           onSubmit={handlePinSubmit}
           onCancel={handlePinCancel}
+          hasError={pinError}
         />
       )}
     </>

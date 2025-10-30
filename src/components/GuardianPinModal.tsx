@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 interface GuardianPinModalProps {
   onSubmit: (pin: string) => void;
   onCancel: () => void;
+  hasError?: boolean;
 }
 
-const GuardianPinModal: React.FC<GuardianPinModalProps> = ({ onSubmit, onCancel }) => {
+const GuardianPinModal: React.FC<GuardianPinModalProps> = ({ onSubmit, onCancel, hasError }) => {
   const [pin, setPin] = useState('');
 
   const handleSubmit = () => {
@@ -26,6 +27,11 @@ const GuardianPinModal: React.FC<GuardianPinModalProps> = ({ onSubmit, onCancel 
         <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#666' }}>
           Please ask your parent or guardian to enter their PIN
         </p>
+        {hasError && (
+          <p style={{ textAlign: 'center', fontSize: '1rem', color: '#d32f2f', fontWeight: 'bold' }}>
+            ❌ Incorrect PIN! Please ask your guardian for help.
+          </p>
+        )}
         <input
           type="password"
           className="pin-input"

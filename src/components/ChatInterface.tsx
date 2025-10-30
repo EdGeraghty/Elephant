@@ -12,10 +12,17 @@ interface ChatInterfaceProps {
   onGuardianClick: () => void;
 }
 
+// Simple counter-based ID generator to avoid collisions
+let messageCounter = 0;
+const generateMessageId = (): string => {
+  messageCounter += 1;
+  return `msg-${Date.now()}-${messageCounter}`;
+};
+
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
+      id: generateMessageId(),
       text: 'Hi! Welcome to Elephant! This is a safe space to chat with your family! 🐘',
       sender: 'Elephant Helper',
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -36,7 +43,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick }) => {
   const handleSendMessage = () => {
     if (inputValue.trim()) {
       const newMessage: Message = {
-        id: Date.now().toString(),
+        id: generateMessageId(),
         text: inputValue,
         sender: 'You',
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -48,7 +55,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onGuardianClick }) => {
       // Simulate a response (in production, this would use Matrix SDK)
       setTimeout(() => {
         const response: Message = {
-          id: (Date.now() + 1).toString(),
+          id: generateMessageId(),
           text: 'Great message! 👍',
           sender: 'Elephant Helper',
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
