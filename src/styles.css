@@ -1,0 +1,356 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Child-Friendly Large UI Elements */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guardian-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.guardian-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.messages-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+.message {
+  background: white;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.message.own {
+  background: #667eea;
+  color: white;
+  margin-left: auto;
+  max-width: 80%;
+}
+
+.message.other {
+  background: white;
+  max-width: 80%;
+}
+
+.message-sender {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.message-time {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.input-area {
+  padding: 20px;
+  background: white;
+  border-top: 2px solid #e0e0e0;
+  display: flex;
+  gap: 12px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 16px 20px;
+  font-size: 1.2rem;
+  border: 3px solid #667eea;
+  border-radius: 16px;
+  outline: none;
+  font-family: inherit;
+}
+
+.message-input:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.send-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.3rem;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.send-button:active {
+  transform: scale(0.98);
+}
+
+/* Guardian PIN Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: #667eea;
+  text-align: center;
+}
+
+.pin-input {
+  width: 100%;
+  padding: 20px;
+  font-size: 2rem;
+  text-align: center;
+  border: 3px solid #667eea;
+  border-radius: 12px;
+  margin: 20px 0;
+  letter-spacing: 1rem;
+  font-weight: bold;
+}
+
+.pin-input:focus {
+  outline: none;
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 16px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.modal-button.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal-button.primary:hover {
+  transform: scale(1.05);
+}
+
+.modal-button.secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.modal-button.secondary:hover {
+  background: #d0d0d0;
+}
+
+/* Settings Panel */
+.settings-panel {
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  margin: 20px;
+}
+
+.settings-panel h2 {
+  color: #667eea;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.setting-item {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.setting-item h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.setting-item p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.button-large {
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.button-large:hover {
+  background: #764ba2;
+  transform: scale(1.05);
+}
+
+/* Welcome Screen */
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.welcome-screen h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.welcome-screen p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.welcome-button {
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .message {
+    font-size: 1rem;
+  }
+  
+  .message-input {
+    font-size: 1rem;
+  }
+  
+  .send-button {
+    font-size: 1.1rem;
+    padding: 14px 24px;
+  }
+  
+  .welcome-screen h1 {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-screen p {
+    font-size: 1.2rem;
+  }
+}
