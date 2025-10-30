@@ -3,9 +3,10 @@ import React from 'react';
 interface SettingsPanelProps {
   onExit: () => void;
   onActivityReportClick: () => void;
+  onContactsManagerClick: () => void;
 }
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportClick }) => {
+const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportClick, onContactsManagerClick }) => {
   return (
     <div className="app-container">
       <div className="header">
@@ -22,7 +23,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onExit, onActivityReportC
           <p>
             Manage who your child can chat with. Only approved contacts will be able to send messages.
           </p>
-          <button className="button-large">Manage Contacts</button>
+          <button className="button-large" onClick={onContactsManagerClick}>Manage Contacts</button>
         </div>
 
         <div className="setting-item">

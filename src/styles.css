@@ -769,3 +769,308 @@ body {
     gap: 8px;
   }
 }
+
+/* Contacts Manager */
+.contacts-manager {
+  padding: 30px;
+  background: white;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.contacts-intro {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.contacts-intro p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.contacts-section {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.contacts-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.contacts-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.button-add {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.button-add:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.add-contact-form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.2rem;
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  margin-bottom: 15px;
+}
+
+.contact-input:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.button-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.button-secondary {
+  background: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.button-secondary:hover {
+  background: #d0d0d0;
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.contact-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card.approved {
+  border-color: #4caf50;
+}
+
+.contact-card.pending {
+  border-color: #ff9800;
+}
+
+.contact-card.blocked {
+  border-color: #f44336;
+  opacity: 0.7;
+}
+
+.contact-avatar {
+  font-size: 3rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-meta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-status {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contact-date {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.action-button:hover {
+  transform: scale(1.05);
+}
+
+.action-button.approve {
+  background: #4caf50;
+  color: white;
+}
+
+.action-button.approve:hover {
+  background: #45a049;
+}
+
+.action-button.block {
+  background: #ff9800;
+  color: white;
+}
+
+.action-button.block:hover {
+  background: #fb8c00;
+}
+
+.action-button.remove {
+  background: #f44336;
+  color: white;
+}
+
+.action-button.remove:hover {
+  background: #e53935;
+}
+
+.contacts-note {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ffc107;
+  margin-top: 20px;
+}
+
+.contacts-note h3 {
+  margin-top: 0;
+  color: #856404;
+  font-size: 1.3rem;
+}
+
+.contacts-note ul {
+  margin: 10px 0 0 0;
+  padding-left: 25px;
+  color: #856404;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.contacts-note li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .contacts-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .button-add {
+    width: 100%;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+  }
+}

@@ -40,6 +40,10 @@ Elephant is a child-friendly Matrix chat client designed for tweens to communica
 ![Guardian Settings](https://github.com/user-attachments/assets/c87bd421-3617-41ff-8e58-fe6056c045b0)
 *Advanced settings for parents: approved contacts, time limits, notifications, security, and activity reports*
 
+### Contacts Manager (Guardian Protected)
+![Contacts Manager](https://github.com/user-attachments/assets/contacts-manager-screenshot)
+*Full contacts management with approved, pending, and blocked lists. Add/remove contacts, approve requests, and block users*
+
 ### Activity Report (Guardian Protected)
 ![Activity Report](https://github.com/user-attachments/assets/activity-report-screenshot)
 *Privacy-respecting activity dashboard showing usage patterns, contact activity, and weekly statistics without revealing message content*
@@ -203,18 +207,44 @@ All customizations are saved automatically in your browser!
 
 **Purpose**: Control who your child can communicate with
 
+**What you see in the Contacts Manager:**
+
+**✅ Approved Contacts (4)**
+- Mom (👩) - Added: 2024-01-15
+- Dad (👨) - Added: 2024-01-15  
+- Grandma (👵) - Added: 2024-02-10
+- Best Friend (🧒) - Added: 2024-03-05
+
+Each contact shows:
+- Avatar emoji
+- Name
+- Approval status
+- Date added
+- Actions: Block or Remove
+
+**⏳ Pending Approval**
+- Sarah (👧) - Requested: 2024-10-28
+- Actions: Approve or Block
+
+**🚫 Blocked Contacts**
+- Any blocked contacts appear here
+- Can be unblocked or removed
+
 **How it works:**
 1. Click "👨‍👩‍👧 Guardian" button
 2. Enter PIN (default: `1234`)
 3. Click "Manage Contacts"
-4. Add/remove contacts from the approved list
-5. Only approved contacts can send messages to your child
+4. View approved, pending, and blocked contacts
+5. Click "+ Add New Contact" to manually add someone
+6. Approve/Block pending requests
+7. Block or Remove existing contacts as needed
 
 **Best practices:**
 - Start with just family members
 - Add friends only after verifying with parents
 - Review the list regularly
 - Remove contacts if needed
+- Check pending requests frequently
 
 ### Time Limits
 
@@ -301,7 +331,8 @@ Elephant/
 │   │   ├── AppearancePanel.tsx     # Customization UI
 │   │   ├── GuardianPinModal.tsx    # PIN entry
 │   │   ├── SettingsPanel.tsx       # Guardian controls
-│   │   └── ActivityReport.tsx      # Activity dashboard (guardian-protected)
+│   │   ├── ActivityReport.tsx      # Activity dashboard (guardian-protected)
+│   │   └── ContactsManager.tsx     # Contact management (guardian-protected)
 │   ├── ThemeContext.tsx   # Theme state management
 │   ├── App.tsx            # Main application
 │   ├── index.tsx          # Entry point

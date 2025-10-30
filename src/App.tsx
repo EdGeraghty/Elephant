@@ -6,6 +6,7 @@ import GuardianPinModal from './components/GuardianPinModal';
 import SettingsPanel from './components/SettingsPanel';
 import AppearancePanel from './components/AppearancePanel';
 import ActivityReport from './components/ActivityReport';
+import ContactsManager from './components/ContactsManager';
 
 const App: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [isGuardianMode, setIsGuardianMode] = useState(false);
   const [showAppearance, setShowAppearance] = useState(false);
   const [showActivityReport, setShowActivityReport] = useState(false);
+  const [showContactsManager, setShowContactsManager] = useState(false);
   const [pinError, setPinError] = useState(false);
   const [guardianPin] = useState('1234'); // In production, this should be stored securely server-side
 
@@ -31,6 +33,10 @@ const App: React.FC = () => {
 
   const handleActivityReportClick = () => {
     setShowActivityReport(true);
+  };
+
+  const handleContactsManagerClick = () => {
+    setShowContactsManager(true);
   };
 
   const handlePinSubmit = (pin: string) => {
@@ -60,6 +66,10 @@ const App: React.FC = () => {
     setShowActivityReport(false);
   };
 
+  const handleCloseContactsManager = () => {
+    setShowContactsManager(false);
+  };
+
   if (showWelcome) {
     return (
       <ThemeProvider>
@@ -74,10 +84,13 @@ const App: React.FC = () => {
         <AppearancePanel onClose={handleCloseAppearance} />
       ) : showActivityReport ? (
         <ActivityReport onClose={handleCloseActivityReport} />
+      ) : showContactsManager ? (
+        <ContactsManager onClose={handleCloseContactsManager} />
       ) : isGuardianMode ? (
         <SettingsPanel 
           onExit={handleExitGuardianMode}
           onActivityReportClick={handleActivityReportClick}
+          onContactsManagerClick={handleContactsManagerClick}
         />
       ) : (
         <ChatInterface 
